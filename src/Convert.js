@@ -7,12 +7,10 @@ export default function Convert(props) {
 
     function handleSaving() {
         props.setSaved([...props.saved,
-            <div key={props.saved.length} id={props.saved.length}>
-                <p>{typed} {currentUnit} &rarr; {result}</p>
-                <img src={exchange} alt="" className='deleteImg'/>
-            </div>
+            `${typed} ${currentUnit} &rarr; ${result}`
         ]);
     }
+
     
 
     function handleSelection(e) {

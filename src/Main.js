@@ -1,14 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Convert from './Convert';
 import Saved from './Saved';
 
 export default function Main() {
     const [saved, setSaved] = useState([]);
-
-    useEffect(() => {
-        console.log(saved);
-    }, [saved])
-
         
     return (
         <div className="main">
