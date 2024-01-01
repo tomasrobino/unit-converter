@@ -56,11 +56,41 @@ export default function Main() {
             default:
                 break;
         }
-    })()
+    })();
 
     result[0]*=100;
     result[0] = Math.trunc(result[0]);
     result[0]/=100;
+
+    let currentUnit = (function() {
+        switch (selected) {
+            case "km-mi":
+                return "km";
+            case "mi-km":
+                return "miles";
+            case "ft-m":
+                return "feet";
+            case "m-ft":
+                return "meters";
+            case "cm-in":
+                return "cm";
+            case "in-cm":
+                return "inches";
+            default:
+                break;
+        }
+    })();
+
+
+    let saved = [];
+
+    function handleSaving() {
+        saved.push(
+            <div>
+                
+            </div>
+        )
+    }
 
     return (
         <div className="main">
@@ -77,9 +107,10 @@ export default function Main() {
                     </select>
                     <img src={exchange} onClick={handleExchange} alt="" className='exchangeImg'/>
                     <input type="number" step="any" value={typed} onChange={handleInput}/>
+                    <p>{currentUnit}</p>
                 </div>
                 <div>
-                    <img src={exchange} alt="" className='exchangeImg'/>
+                    <img src={exchange} onClick={handleSaving} alt="" className='saveImg'/>
                     <p>{result}</p>
                 </div>
             </div>
