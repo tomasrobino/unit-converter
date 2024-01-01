@@ -3,9 +3,12 @@
   --purple: #2E0039;
 }
 
-.App {
-  text-align: center;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+
 
 .header {
   display: flex;
@@ -14,7 +17,7 @@
 }
 
 .headerGroup {
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   display: flex;
   height: 48px;
@@ -33,6 +36,30 @@
   width: 32px;
   height: 32px;
 }
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.convert {
+  border-radius: 10px;
+  box-shadow: 0 2px 5px gray;
+  margin-top: 50px;
+  width: var(--alignment);
+  background-color: var(--purple);
+  padding: 20px;
+}
+
+.convert p {
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+
 
 .footer {
   position: absolute;
