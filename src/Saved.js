@@ -11,10 +11,11 @@ export default function Saved(props) {
     let saved = [];
     props.saved.forEach((element, i) => {
         saved.push(
-        <div key={i} id={i} onClick={handleDeletion}>
-            <p>{props.saved[i]}</p>
-            <img src={exchange} alt="" className='deleteImg'/>
-        </div>)
+            <div key={i} id={i} onClick={handleDeletion}>
+                <p>{props.saved[i]}</p>
+                <img src={exchange} alt="" className='deleteImg'/>
+            </div>
+        )
     });
 
     return (

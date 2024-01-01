@@ -7,7 +7,7 @@ export default function Convert(props) {
 
     function handleSaving() {
         props.setSaved([...props.saved,
-            `${typed} ${currentUnit} &rarr; ${result}`
+            typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
         ]);
     }
 
