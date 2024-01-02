@@ -63,7 +63,7 @@ export default function Convert(props) {
             case "km-mi":
                 return [typed*0.621371, " miles"];
             case "mi-km":
-                return [typed*1.60934, " kilometers"];
+                return [typed*1.60934, " km"];
             case "ft-m":
                 return [typed*0.3048, " meters"];
             case "m-ft":
@@ -103,22 +103,35 @@ export default function Convert(props) {
     return(
         <div className="convert">
             <p>convert</p>
-            <div>
-                <select name="selConversion" onChange={handleSelection} value={selected}>
-                    <option value="km-mi">km &rarr; miles</option>
-                    <option value="mi-km">miles &rarr; km</option>
-                    <option value="ft-m">ft &rarr; meters</option>
-                    <option value="m-ft">meters &rarr; ft</option>
-                    <option value="cm-in">cm &rarr; inches</option>
-                    <option value="in-cm">inches &rarr; cm</option>
-                </select>
-                <img src={exchangeWhite} onClick={handleExchange} alt="" className='exchangeImg'/>
-                <input type="number" step="any" value={typed} onChange={handleInput}/>
-                <p>{currentUnit}</p>
+            <div className="inputAndSelect">
+                <div className="selectDiv">
+                    <select name="selConversion" onChange={handleSelection} value={selected} className="select">
+                        <option value="km-mi">km &rarr; miles</option>
+                        <option value="mi-km">miles &rarr; km</option>
+                        <option value="ft-m">ft &rarr; meters</option>
+                        <option value="m-ft">meters &rarr; ft</option>
+                        <option value="cm-in">cm &rarr; inches</option>
+                        <option value="in-cm">inches &rarr; cm</option>
+                    </select>
+                    <div style={{ width: "80px" }}>
+                        <img src={exchangeWhite} onClick={handleExchange} alt="" className='exchangeImg'/>
+                    </div>
+                </div>
+                <div className="inputDiv">
+                    <input type="number" step="any" value={typed} onChange={handleInput} className="input"/>
+                    <div style={{ width: "80px" }}>
+                        <p>{currentUnit}</p>
+                    </div>
+                </div>
             </div>
-            <div>
+            <div className="resultDiv">
                 <img src={heart} onClick={handleSaving} alt="" className='saveImg'/>
-                <p>{result}</p>
+                <div style={{ display: "flex" }}>
+                    <p style={{ marginRight: "20px" }}>{result[0]}</p>
+                    <div style={{ width: "80px" }}>
+                        <p>{result[1]}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

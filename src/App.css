@@ -1,5 +1,5 @@
 :root {
-  --alignment: 716px;
+  --alignment: 80vw;
   --purple: #2E0039;
 }
 
@@ -8,7 +8,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 
 .header {
   display: flex;
@@ -45,12 +44,16 @@ input::-webkit-inner-spin-button {
 }
 
 .convert {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 10px;
   box-shadow: 0 2px 5px gray;
   margin-top: 50px;
   width: var(--alignment);
+  height: 200px;
   background-color: var(--purple);
-  padding: 20px;
+  padding: 40px;
 }
 
 .convert p {
@@ -58,6 +61,81 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
   font-size: 24px;
   margin: 0;
+}
+
+.inputAndSelect {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.selectDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 277px;
+}
+
+.select {
+  width: 158px;
+  background-color: transparent;
+  color: white;
+  border: 0;
+  border-bottom: 2px solid;
+  border-color: white;
+  outline: transparent;
+}
+
+option {
+  background-color: var(--purple);
+}
+
+.exchangeImg {
+  width: 20px;
+}
+
+.inputDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input {
+  margin-right: 20px;
+  background-color: transparent;
+  color: white;
+  border: 0;
+  border-bottom: 2px solid;
+  border-color: white;
+  text-align: end;
+  outline: transparent;
+}
+
+.resultDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 692px) {
+  .resultDiv {
+    max-width: 277px;
+  }
+
+  .convert {
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .selectDiv {
+    max-width: 256px;
+  }
+
+  .input {
+    width: 150px;
+  }
+
+  .resultDiv {
+    max-width: 256px;
+  }
 }
 
 
