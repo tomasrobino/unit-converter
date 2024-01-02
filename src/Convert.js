@@ -1,5 +1,6 @@
 import { useState } from "react";
-import exchange from './exchange.svg';
+import exchangeWhite from './exchangeWhite.svg';
+import heart from "./heart.svg";
 
 export default function Convert(props) {
     const [selected, setSelected] = useState("km-mi");
@@ -111,12 +112,12 @@ export default function Convert(props) {
                     <option value="cm-in">cm &rarr; inches</option>
                     <option value="in-cm">inches &rarr; cm</option>
                 </select>
-                <img src={exchange} onClick={handleExchange} alt="" className='exchangeImg'/>
+                <img src={exchangeWhite} onClick={handleExchange} alt="" className='exchangeImg'/>
                 <input type="number" step="any" value={typed} onChange={handleInput}/>
                 <p>{currentUnit}</p>
             </div>
             <div>
-                <img src={exchange} onClick={handleSaving} alt="" className='saveImg'/>
+                <img src={heart} onClick={handleSaving} alt="" className='saveImg'/>
                 <p>{result}</p>
             </div>
         </div>

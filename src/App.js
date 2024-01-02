@@ -1,4 +1,4 @@
-import exchange from './exchange.svg';
+import exchangeBlack from './exchangeBlack.svg';
 import './App.css';
 import Main from './Main';
 
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className='header'>
         <div className='headerGroup'>
-          <img src={exchange} alt="" className='headerImg'/>
+          <img src={exchangeBlack} alt="" className='headerImg'/>
           <p className='title'>unit converter</p>
         </div>
       </div>

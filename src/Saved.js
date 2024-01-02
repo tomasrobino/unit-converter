@@ -1,4 +1,4 @@
-import exchange from './exchange.svg';
+import equis from './equis.svg';
 
 export default function Saved(props) {
     function handleDeletion(e) {
@@ -15,7 +15,7 @@ export default function Saved(props) {
             saved.push(
                 <div key={i} id={i} onClick={handleDeletion}>
                     <p>{props.saved[i]}</p>
-                    <img src={exchange} alt="" className='deleteImg'/>
+                    <img src={equis} alt="" className='deleteImg'/>
                 </div>
             )
         });
