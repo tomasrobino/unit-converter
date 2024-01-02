@@ -11,9 +11,9 @@ export default function Saved(props) {
     
     let saved = [];
     if (Array.isArray(props.saved)){
-        props.saved.forEach((element, i) => {
+        props.saved.forEach((_element, i) => {
             saved.push(
-                <div key={i} id={i} onClick={handleDeletion}>
+                <div key={i} id={i} onClick={handleDeletion} className='savedBox'>
                     <p>{props.saved[i]}</p>
                     <img src={equis} alt="" className='deleteImg'/>
                 </div>
@@ -22,8 +22,11 @@ export default function Saved(props) {
     }
 
     return (
-        <div>
-            {saved}
+        <div className='saved'>
+            <p className='savedTitle'>saved</p>
+            <div className='savedDiv'>
+                {saved}
+            </div>
         </div>
     )
 }

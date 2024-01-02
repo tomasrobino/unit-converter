@@ -16,7 +16,6 @@ export default function Main() {
     return (
         <div className="main">
             <Convert saved={saved} setSaved={setSaved}/>
-            <p>saved</p>
             <Saved saved={saved} setSaved={setSaved}/>
         </div>
     )

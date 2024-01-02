@@ -51,7 +51,6 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 2px 5px gray;
   margin-top: 50px;
   width: var(--alignment);
-  height: 200px;
   background-color: var(--purple);
   padding: 40px;
 }
@@ -137,6 +136,40 @@ option {
     max-width: 256px;
   }
 }
+
+
+.saved {
+  width: var(--alignment);
+  height: 180px;
+}
+
+.savedTitle {
+  color: dimgray;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.savedDiv {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.savedBox {
+  display: flex;
+  background-color: lightgray;
+  border-radius: 5px;
+  justify-content: space-around;
+  height: 40px;
+  align-items: center;
+}
+
+.deleteImg {
+  width: 10px;
+}
+
 
 
 .footer {

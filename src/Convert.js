@@ -4,7 +4,7 @@ import heart from "./heart.svg";
 
 export default function Convert(props) {
     const [selected, setSelected] = useState("km-mi");
-    const [typed, setTyped] = useState(0);
+    const [typed, setTyped] = useState("0");
 
     function handleSaving() {
         if(Array.isArray(props.saved)) { 
