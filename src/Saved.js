@@ -3,7 +3,7 @@ import equis from './equis.svg';
 export default function Saved(props) {
     function handleDeletion(e) {
         let a = [...props.saved];
-        a.splice(e.target.parentNode.id, 1);
+        a.splice(a.findIndex((element) => element === e.target.parentNode.firstChild.textContent), 1);
         props.setSaved(a);
         console.log(a);
         window.localStorage.setItem("SAVED", JSON.stringify(a));

@@ -7,11 +7,15 @@ export default function Convert(props) {
     const [typed, setTyped] = useState("0");
 
     function handleSaving() {
-        if(Array.isArray(props.saved)) { 
-            props.setSaved([...props.saved,
-                typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
+        if(Array.isArray(props.saved)) {
+            let aux = [...props.saved];
+            if (props.saved.length > 7) {
+                aux.shift();
+            }
+            props.setSaved([
+                typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux
             ]);
-            window.localStorage.setItem("SAVED", JSON.stringify([...props.saved, typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])]));
+            window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux]));
         } else {
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
@@ -33,7 +37,7 @@ export default function Convert(props) {
     }
 
     function handleExchange(e) {
-        setTyped(result[0]);
+        setTyped(result[0].toString());
         switch (selected) {
             case "km-mi":
                 setSelected("mi-km");
