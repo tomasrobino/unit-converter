@@ -6,9 +6,19 @@ export default function Convert(props) {
     const [typed, setTyped] = useState(0);
 
     function handleSaving() {
-        props.setSaved([...props.saved,
-            typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
-        ]);
+        if(Array.isArray(props.saved)) { 
+            props.setSaved([...props.saved,
+                typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
+            ]);
+            window.localStorage.setItem("SAVED", JSON.stringify([...props.saved, typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])]));
+        } else {
+            props.setSaved([
+                typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
+            ]);
+            window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])]));
+        }
+
+        
     }
 
     
