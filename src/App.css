@@ -157,6 +157,12 @@ option {
   gap: 10px;
 }
 
+@media only screen and (max-width: 660px) {
+  .savedDiv {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .savedBox {
   display: flex;
   background-color: lightgray;
