@@ -1,6 +1,15 @@
+import { useEffect, useState } from 'react';
 import equis from './equis.svg';
 
 export default function Saved(props) {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch("/api")
+            .then(res => res.json())
+            .then(data => setData(data));
+    }, []);
+
     function handleDeletion(e) {
         let a = [...props.saved];
         a.splice(a.findIndex((element) => element === e.target.parentNode.firstChild.textContent), 1);
@@ -23,6 +32,7 @@ export default function Saved(props) {
 
     return (
         <div className='saved'>
+            <p>{!data ? "Loading..." : `${data[0].first}`}</p>
             <p className='savedTitle'>saved</p>
             <div className='savedDiv'>
                 {saved}
