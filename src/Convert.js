@@ -10,7 +10,7 @@ export default function Convert(props) {
         if(Array.isArray(props.saved)) {
             let aux = [...props.saved];
             if (props.saved.length > 7) {
-                aux.shift();
+                aux.splice(aux.length-1, 1);
             }
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux
