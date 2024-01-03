@@ -4,11 +4,22 @@ dotenv.config();
 const PORT = process.env.PORT || 3008;
 const app = express();
 
-app.get("/api", (req, res) => {
-    res.json({ message: "Hello" })
-});
+async function get(connection) {
+    try {
+        const [results, fields] = await connection.query('SELECT * from conversions');
+        console.log(results);
+        console.log(fields);
 
-async function main() {
+        app.get("/api", (req, res) => {
+            res.json(results)
+        });
+
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+async function initdb() {
     const mysql = require('mysql2/promise');
     const connection = await mysql.createConnection({
         host: 'localhost',
@@ -17,16 +28,10 @@ async function main() {
         database: 'conversions'
     })
 
-    try {
-        const [results, fields] = await connection.query('SELECT * from conversions');
-        console.log(results);
-        console.log(fields);
-    } catch(err) {
-        console.log(err);
-    }
+    get(connection);
 }
 
-main();
+initdb();
 
 app.listen(PORT, () => {
     console.log("server listening at port "+PORT);
