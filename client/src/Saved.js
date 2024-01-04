@@ -5,7 +5,7 @@ export default function Saved(props) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch("/api")
+        fetch("http://localhost:3008/api")
             .then(res => res.json())
             .then(data => setData(data));
     }, []);
