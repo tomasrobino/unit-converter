@@ -8,15 +8,13 @@ export default function Convert(props) {
 
     function handleSaving() {
         async function postDB(data) {
-            return await fetch("http://localhost:3008/", {
+            await fetch("http://localhost:3008/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
-            })
-                .then(res => res.json())
-                .then(data => props.setSaved(data));
+            });
         }
 
         if(Array.isArray(props.saved)) {
@@ -24,7 +22,7 @@ export default function Convert(props) {
             if (props.saved.length > 7) {
                 aux.splice(aux.length-1, 1);
             }
-            postDB({ type: 1, first: typed, second: result[0] });
+            postDB({ type: 1, first: parseFloat(typed), second: result[0] });
             /*
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux

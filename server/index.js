@@ -7,21 +7,15 @@ const app = express();
 
 app.use(cors({
     origin: "http://localhost:3000"
-}));
+}), express.json());
 
 async function get(connection) {
     try {
         const [results, fields] = await connection.query('SELECT * from conversions');
-        console.log(results);
-        console.log(fields);
 
         app.get("/api", (req, res) => {
             res.json(results)
         });
-
-        app.post('/', (req, res) => {
-            console.log("POST Request Called")
-        })
 
     } catch(err) {
         console.log(err);
@@ -38,6 +32,10 @@ async function initdb() {
     })
 
     get(connection);
+
+    app.post('/', (req, res) => {
+        console.log(req.body);
+    })
 }
 
 initdb();
