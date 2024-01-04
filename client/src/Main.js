@@ -9,7 +9,7 @@ export default function Main() {
         fetch("http://localhost:3008/api")
             .then(res => res.json())
             .then(data => setSaved(data));
-    }, []);
+    }, [saved]);
         
     return (
         <div className="main">

@@ -19,6 +19,10 @@ async function get(connection) {
             res.json(results)
         });
 
+        app.post('/', (req, res) => {
+            console.log("POST Request Called")
+        })
+
     } catch(err) {
         console.log(err);
     }

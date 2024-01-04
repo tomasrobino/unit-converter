@@ -7,23 +7,36 @@ export default function Convert(props) {
     const [typed, setTyped] = useState("0");
 
     function handleSaving() {
+        async function postDB(data) {
+            return await fetch("http://localhost:3008/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(data => props.setSaved(data));
+        }
+
         if(Array.isArray(props.saved)) {
             let aux = [...props.saved];
             if (props.saved.length > 7) {
                 aux.splice(aux.length-1, 1);
             }
+            postDB({ type: 1, first: typed, second: result[0] });
+            /*
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux
             ]);
             window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux]));
+            */
         } else {
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
             ]);
             window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])]));
         }
-
-        
     }
 
     
