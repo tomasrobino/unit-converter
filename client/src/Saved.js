@@ -6,7 +6,6 @@ export default function Saved(props) {
         a.splice(a.findIndex((element) => element === e.target.parentNode.firstChild.textContent), 1);
         props.setSaved(a);
         console.log(a);
-        window.localStorage.setItem("SAVED", JSON.stringify(a));
     }
     
     let saved = [];
