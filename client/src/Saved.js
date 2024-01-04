@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
 import equis from './equis.svg';
 
 export default function Saved(props) {
-    const [data, setData] = useState(null);
-
-    
-
     function handleDeletion(e) {
         let a = [...props.saved];
         a.splice(a.findIndex((element) => element === e.target.parentNode.firstChild.textContent), 1);
