@@ -29,13 +29,13 @@ async function initdb() {
         user: 'conversionuser',
         password: 'password',
         database: 'conversions'
-    })
+    });
 
     get(connection);
 
     app.post('/', (req, res) => {
-        console.log(req.body);
-    })
+        connection.query(`insert into conversions(type, first, second) values(${req.body.type}, ${req.body.first}, ${req.body.second});`);
+    });
 }
 
 initdb();
