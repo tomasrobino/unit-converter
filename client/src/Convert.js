@@ -14,10 +14,14 @@ export default function Convert(props) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
-            });
-            fetch("http://localhost:3008/api")
-                .then(res => res.json())
-                .then(data => props.setSaved(data));
+            }).then(res => {
+                while (res!=="1") {
+                    return fetch("http://localhost:3008/api", {
+                        method: "GET"
+                    });
+                }
+            }).then(res => res.json())
+            .then(data => props.setSaved(data));; 
         }
 
         if(Array.isArray(props.saved)) {

@@ -33,8 +33,8 @@ app.get("/api", (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    console.log("POST");
     connection.query(`insert into conversions(type, first, second) values(${req.body.type}, ${req.body.first}, ${req.body.second});`);
+    res.end("1");
 });
 
 
