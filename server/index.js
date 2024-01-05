@@ -26,9 +26,17 @@ connection.connect((err) => {
 });
 
 app.get("/api", (req, res) => {
-    connection.query('SELECT * from conversions', (err, result) => {
+    connection.query('SELECT count(id) from conversions;', (err, result) => {
         if (err) throw err;
-        res.json(result);
+        if(result[0]["count(id)"] > 8) {
+            connection.query(`delete from conversions order by id asc limit ${result[0]["count(id)"] - 8};`, (err, result) => {
+                if (err) throw err;
+            });
+        }
+        connection.query('SELECT * from conversions order by id desc limit 8;', (err, result) => {
+            if (err) throw err;
+            res.json(result);
+        });
     });
 });
 

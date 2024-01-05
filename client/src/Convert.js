@@ -36,12 +36,16 @@ export default function Convert(props) {
             ]);
             window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1]), ...aux]));
             */
-        } else {
+        }
+        /*
+        else {
+            console.log("NOT ARRAY")
             props.setSaved([
                 typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])
             ]);
             window.localStorage.setItem("SAVED", JSON.stringify([typed.concat(" ",currentUnit, " ", "\u2192", " ", result[0], result[1])]));
         }
+        */
     }
 
     
