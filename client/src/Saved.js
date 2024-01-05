@@ -6,6 +6,13 @@ export default function Saved(props) {
             let a = [...props.saved];
             a.splice(a.findIndex((element) => element.id === parseInt(e.currentTarget.id)), 1);
             props.setSaved(a);
+            fetch("http://localhost:3008/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ id: e.currentTarget.id })
+            })
         }
     }
     

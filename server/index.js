@@ -41,8 +41,12 @@ app.get("/api", (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    connection.query(`insert into conversions(type, first, second) values(${req.body.type}, ${req.body.first}, ${req.body.second});`);
-    res.end("1");
+    if (req.body.first !== undefined) {
+        connection.query(`insert into conversions(type, first, second) values(${req.body.type}, ${req.body.first}, ${req.body.second});`);
+        res.end("1");
+    } else if (req.body.id !== undefined) {
+        connection.query(`delete from conversions where id=${req.body.id};`);
+    }
 });
 
 
