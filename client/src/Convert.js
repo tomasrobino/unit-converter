@@ -24,10 +24,6 @@ export default function Convert(props) {
             .then(data => props.setSaved(data));; 
         }
 
-        let aux = [...props.saved];
-        if (props.saved.length > 7) {
-            aux.splice(aux.length-1, 1);
-        }
         postDB({ type: 1, first: parseFloat(typed), second: result[0] });
     }
 
