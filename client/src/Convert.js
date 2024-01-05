@@ -15,6 +15,9 @@ export default function Convert(props) {
                 },
                 body: JSON.stringify(data)
             });
+            fetch("http://localhost:3008/api")
+                .then(res => res.json())
+                .then(data => props.setSaved(data));
         }
 
         if(Array.isArray(props.saved)) {
