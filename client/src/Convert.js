@@ -21,7 +21,7 @@ export default function Convert(props) {
                     });
                 }
             }).then(res => res.json())
-            .then(data => props.setSaved(data));; 
+            .then(data => props.setSaved(data));
         }
 
         postDB({ type: parseInt(selected), first: parseFloat(typed), second: result[0] });

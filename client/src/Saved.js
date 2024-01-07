@@ -19,9 +19,33 @@ export default function Saved(props) {
     let saved = [];
     if (Array.isArray(props.saved)){
         props.saved.forEach((element, i) => {
+            let savedText;
+            switch (element.type) {
+                case 0:
+                    savedText = ["km", " miles"];
+                    break;
+                case 1:
+                    savedText = ["miles", " km"];
+                    break;
+                case 2:
+                    savedText = ["ft", " meters"];
+                    break;
+                case 3:
+                    savedText = ["meters", " ft"];
+                    break;
+                case 4:
+                    savedText = ["cm", " inches"];
+                    break;
+                case 5:
+                    savedText = ["inches", "cm"];
+                    break;
+                default:
+                    break;
+            }
+
             saved.push(
                 <div key={element.id} id={element.id} onClick={handleDeletion} className='savedBox'>
-                    <p>{element.first} {element.type} {element.second}</p>
+                    <p>{element.first} {savedText[0]} &rarr; {element.second} {savedText[1]}</p>
                     <img src={equis} alt="" className='deleteImg'/>
                 </div>
             )
