@@ -3,7 +3,7 @@ import exchangeWhite from './exchangeWhite.svg';
 import heart from "./heart.svg";
 
 export default function Convert(props) {
-    const [selected, setSelected] = useState("km-mi");
+    const [selected, setSelected] = useState("0");
     const [typed, setTyped] = useState("0");
 
     function handleSaving() {
@@ -24,7 +24,7 @@ export default function Convert(props) {
             .then(data => props.setSaved(data));; 
         }
 
-        postDB({ type: 1, first: parseFloat(typed), second: result[0] });
+        postDB({ type: parseInt(selected), first: parseFloat(typed), second: result[0] });
     }
 
     
@@ -37,45 +37,26 @@ export default function Convert(props) {
         setTyped(e.target.value);
     }
 
-    function handleExchange(e) {
+    function handleExchange() {
         setTyped(result[0].toString());
-        switch (selected) {
-            case "km-mi":
-                setSelected("mi-km");
-                break;
-            case "mi-km":
-                setSelected("km-mi");
-                break;
-            case "ft-m":
-                setSelected("m-ft");
-                break;
-            case "m-ft":
-                setSelected("ft-m");
-                break;
-            case "cm-in":
-                setSelected("in-cm");
-                break;
-            case "in-cm":
-                setSelected("cm-in");
-                break;
-            default:
-                break;
-        }
+        if (selected%2===0) {
+            setSelected((parseInt(selected)+1).toString());
+        } else setSelected((selected-1).toString());
     }
     
     let result = (function() {
         switch (selected) {
-            case "km-mi":
+            case "0":
                 return [typed*0.621371, " miles"];
-            case "mi-km":
+            case "1":
                 return [typed*1.60934, " km"];
-            case "ft-m":
+            case "2":
                 return [typed*0.3048, " meters"];
-            case "m-ft":
+            case "3":
                 return [typed*3.28084, " feet"];
-            case "cm-in":
+            case "4":
                 return [typed*0.3937, " inches"];
-            case "in-cm":
+            case "5":
                 return [typed*2.54, " centimeters"];
             default:
                 break;
@@ -88,17 +69,17 @@ export default function Convert(props) {
 
     let currentUnit = (function() {
         switch (selected) {
-            case "km-mi":
+            case "0":
                 return "km";
-            case "mi-km":
+            case "1":
                 return "miles";
-            case "ft-m":
+            case "2":
                 return "feet";
-            case "m-ft":
+            case "3":
                 return "meters";
-            case "cm-in":
+            case "4":
                 return "cm";
-            case "in-cm":
+            case "5":
                 return "inches";
             default:
                 break;
@@ -111,12 +92,12 @@ export default function Convert(props) {
             <div className="inputAndSelect">
                 <div className="selectDiv">
                     <select name="selConversion" onChange={handleSelection} value={selected} className="select">
-                        <option value="km-mi">km &rarr; miles</option>
-                        <option value="mi-km">miles &rarr; km</option>
-                        <option value="ft-m">ft &rarr; meters</option>
-                        <option value="m-ft">meters &rarr; ft</option>
-                        <option value="cm-in">cm &rarr; inches</option>
-                        <option value="in-cm">inches &rarr; cm</option>
+                        <option value="0">km &rarr; miles</option>
+                        <option value="1">miles &rarr; km</option>
+                        <option value="2">ft &rarr; meters</option>
+                        <option value="3">meters &rarr; ft</option>
+                        <option value="4">cm &rarr; inches</option>
+                        <option value="5">inches &rarr; cm</option>
                     </select>
                     <div style={{ width: "80px" }}>
                         <img src={exchangeWhite} onClick={handleExchange} alt="" className='exchangeImg'/>
